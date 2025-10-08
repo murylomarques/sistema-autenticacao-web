@@ -1,0 +1,20 @@
+/* src/components/AuthLayout.module.css */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Altura total da tela */
+    background-color: #f0f2f5; /* Um fundo cinza claro */
+    padding: 20px;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 450px; /* Largura máxima do card */
+    padding: 40px 30px;
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center;
+  }

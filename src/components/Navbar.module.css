@@ -1,0 +1,32 @@
+/* src/components/Navbar.module.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+  }
+  
+  .welcomeMessage {
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .logoutButton {
+    padding: 0.5rem 1rem;
+    border: 1px solid #EF4444; /* Vermelho */
+    border-radius: 6px;
+    background-color: transparent;
+    color: #EF4444;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .logoutButton:hover {
+    background-color: #EF4444;
+    color: white;
+  }

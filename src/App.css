@@ -1,0 +1,16 @@
+/* src/App.css */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .main-content {
+    width: 100%;
+    max-width: 450px; /* Largura máxima do nosso conteúdo central */
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
