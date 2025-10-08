@@ -1,21 +1,26 @@
-// src/components/Navbar.jsx
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
-  // Pegamos o usuário e a função logout do nosso contexto
   const { user, logout } = useContext(AuthContext);
 
   return (
-    <nav className={styles.navbar}>
-      <span className={styles.welcomeMessage}>
-        Bem-vindo, <strong>{user?.username}</strong>!
-      </span>
-      <button onClick={logout} className={styles.logoutButton}>
-        Logout
-      </button>
-    </nav>
+    <header className={styles.navbar}>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          AuthSystem
+        </div>
+        <div className={styles.userInfo}>
+          <span className={styles.welcomeMessage}>
+            Logado como <strong>{user?.username}</strong>
+          </span>
+          <button onClick={logout} className={styles.logoutButton}>
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
   );
 };
 

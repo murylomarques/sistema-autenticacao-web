@@ -1,32 +1,65 @@
-/* src/components/Navbar.module.css */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-bottom: 1px solid #E5E7EB; /* Linha sutil de separação */
     width: 100%;
-    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    height: 64px; /* Altura fixa */
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  
+  .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1280px; /* Limita a largura do conteúdo interno */
+      margin: 0 auto;
+  }
+  
+  .logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #4f46e5;
+    letter-spacing: -1px;
+  }
+  
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
   
   .welcomeMessage {
-    color: #333;
-    font-weight: 500;
+    color: #6B7280;
+    font-size: 0.875rem;
+  }
+  
+  .welcomeMessage strong {
+      color: #1F2937;
+      font-weight: 600;
   }
   
   .logoutButton {
     padding: 0.5rem 1rem;
-    border: 1px solid #EF4444; /* Vermelho */
-    border-radius: 6px;
-    background-color: transparent;
-    color: #EF4444;
+    margin-top: 0;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #374151;
     font-weight: 600;
+    font-size: 0.875rem;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
   }
   
   .logoutButton:hover {
-    background-color: #EF4444;
-    color: white;
+    background-color: #F9FAFB;
+    border-color: #9CA3AF;
+    color: #111827;
   }

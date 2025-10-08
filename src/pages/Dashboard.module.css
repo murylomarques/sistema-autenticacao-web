@@ -1,0 +1,46 @@
+/* src/pages/Dashboard.module.css */
+.pageHeader {
+    background-color: #ffffff;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 1.5rem 2rem;
+  }
+  
+  .headerContent {
+      max-width: 1280px;
+      margin: 0 auto;
+  }
+  
+  .headerTitle {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 0;
+  }
+  
+  .pageContent {
+    padding: 2rem;
+  }
+  
+  .contentWrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+  }
+  
+  /* Estilo do Card Principal */
+  .card {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #E5E7EB;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .card p {
+      color: #4B5563;
+      line-height: 1.7;
+      margin-top: 0;
+  }
+  
+  .card p:not(:first-child) {
+      margin-top: 1rem;
+  }

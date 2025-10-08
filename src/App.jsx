@@ -1,35 +1,54 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from './context/AuthContext';
-import AuthPage from './pages/AuthPage.jsx'; // Certifique-se de que a extensão está aqui se necessário
-import Navbar from './components/Navbar.jsx'; // Importe a Navbar
+import { AuthContext } from './context/AuthContext.jsx';
+import AuthPage from './pages/AuthPage.jsx';
+import Navbar from './components/Navbar.jsx';
+import styles from './pages/Dashboard.module.css';
 
-// --- Componente de Layout para Páginas Autenticadas ---
-// Este componente envolve as páginas que o usuário vê depois de logar
-const AuthenticatedLayout = ({ children }) => {
-  return (
-    <div>
-      <Navbar /> {/* A barra de navegação com o botão de logout */}
-      <main style={{ padding: '2rem' }}>
-        {children} {/* O conteúdo da página (ex: Dashboard) */}
-      </main>
+// O Layout Autenticado agora é mais simples
+const AuthenticatedLayout = ({ children }) => (
+  <div>
+    <Navbar />
+    <main>{children}</main>
+  </div>
+);
+
+// O Dashboard agora tem um cabeçalho e um conteúdo principal
+const Dashboard = () => (
+  <div>
+    <header className={styles.pageHeader}>
+      <div className={styles.headerContent}>
+        <h1 className={styles.headerTitle}>Dashboard</h1>
+      </div>
+    </header>
+    <div className={styles.pageContent}>
+      <div className={styles.contentWrapper}>
+        <div className={styles.card}>
+          <p>
+            Este é o conteúdo principal, visível apenas para usuários logados.
+            A interface agora está mais limpa e organizada.
+          </p>
+          <p>
+            A partir daqui, você pode construir qualquer funcionalidade que precise de um usuário
+            autenticado, como uma página de perfil, configurações da conta, ou o conteúdo
+            principal da sua aplicação.
+          </p>
+        </div>
+      </div>
     </div>
-  );
-};
+  </div>
+);
 
-// --- Componente de Página de Dashboard ---
-const Dashboard = () => {
-  return (
-    <div>
-      <h1>Dashboard Secreto</h1>
-      <p>Este é o conteúdo principal, visível apenas para usuários logados.</p>
-    </div>
-  );
-};
-
-// --- Componente Principal da Aplicação ---
 function App() {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            Carregando...
+        </div>
+    );
+  }
 
   return (
     <Routes>
@@ -37,44 +56,18 @@ function App() {
         path="/"
         element={
           user ? (
-            // Se o usuário está logado, mostra o layout autenticado com o Dashboard dentro
             <AuthenticatedLayout>
               <Dashboard />
             </AuthenticatedLayout>
           ) : (
-            // Se não, redireciona para a página de autenticação
             <Navigate to="/auth" />
           )
         }
       />
       <Route
         path="/auth"
-        element={
-          user ? (
-            // Se o usuário está logado e tenta acessar /auth, redireciona para o dashboard
-            <Navigate to="/" />
-          ) : (
-            // Se não, mostra a página de login/registro
-            <AuthPage />
-          )
-        }
+        element={user ? <Navigate to="/" /> : <AuthPage />}
       />
-      
-      {/* Você pode adicionar mais rotas protegidas aqui no futuro */}
-      {/* Exemplo:
-      <Route
-        path="/profile"
-        element={
-          user ? (
-            <AuthenticatedLayout>
-              <ProfilePage />
-            </AuthenticatedLayout>
-          ) : (
-            <Navigate to="/auth" />
-          )
-        }
-      />
-      */}
     </Routes>
   );
 }
