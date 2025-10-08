@@ -32,12 +32,19 @@ const login = (username, password) => {
   });
   // No futuro, salvaremos o token JWT aqui.
 };
-
+const logout = () => {
+    // Como o JWT é stateless, o logout no front-end é simplesmente
+    // remover o token do armazenamento local.
+    // O back-end não precisa ser notificado.
+    localStorage.removeItem('user');
+  };
+  
 // Exporta as funções para que possam ser usadas em outras partes da aplicação.
 const AuthService = {
   register,
   login,
-  // logout, getCurrentUser, etc. virão aqui no futuro
+  logout
+  
 };
 
 export default AuthService;

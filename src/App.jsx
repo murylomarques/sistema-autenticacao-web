@@ -1,22 +1,47 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
+import { useContext } from 'react'; // Importe useContext
+import { AuthContext } from './context/AuthContext'; // Importe nosso contexto
 import Register from './pages/Register';
 import Login from './pages/Login';
 
 function App() {
+  const { user, logout } = useContext(AuthContext); // Use o contexto
+
   return (
     <div>
       <nav>
-        {/* Aqui podemos colocar um menu de navegação no futuro */}
+        {user ? (
+          // Se o usuário estiver logado
+          <div>
+            <span>Bem-vindo, {user.username}!</span>
+            <button onClick={logout}>Logout</button>
+          </div>
+        ) : (
+          // Se não estiver logado
+          <div>
+            <Link to="/login">Login</Link> | <Link to="/register">Registro</Link>
+          </div>
+        )}
       </nav>
+
+      <hr />
 
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* A rota "/" será a nossa página principal ou de login no futuro */}
-        <Route path="/" element={<h2>Página Inicial</h2>} />
+        <Route
+          path="/"
+          element={
+            user ? (
+              <h2>Seu Dashboard Secreto</h2>
+            ) : (
+              <h2>Página Inicial Pública</h2>
+            )
+          }
+        />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
