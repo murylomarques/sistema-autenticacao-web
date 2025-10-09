@@ -18,7 +18,18 @@ const register = (username, email, password) => {
     password,
   });
 };
-
+const forgotPassword = (email) => {
+    return axios.post(API_URL + 'forgot-password', {
+      email,
+    });
+  };
+  
+  const resetPassword = (token, newPassword) => {
+    return axios.post(API_URL + 'reset-password', {
+      token,
+      newPassword,
+    });
+  };
 /**
  * Função para logar um usuário.
  * @param {string} username - O nome de usuário.
@@ -43,7 +54,9 @@ const logout = () => {
 const AuthService = {
   register,
   login,
-  logout
+  logout,
+  forgotPassword, 
+  resetPassword,  
   
 };
 

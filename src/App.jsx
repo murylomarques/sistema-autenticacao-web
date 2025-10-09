@@ -4,6 +4,8 @@ import { AuthContext } from './context/AuthContext.jsx';
 import AuthPage from './pages/AuthPage.jsx';
 import Navbar from './components/Navbar.jsx';
 import styles from './pages/Dashboard.module.css';
+import ForgotPassword from './pages/ForgotPassword.jsx';
+import ResetPassword from './pages/ResetPassword.jsx';
 
 // O Layout Autenticado agora é mais simples
 const AuthenticatedLayout = ({ children }) => (
@@ -63,6 +65,14 @@ function App() {
             <Navigate to="/auth" />
           )
         }
+      />
+      <Route 
+        path="/forgot-password" 
+        element={user ? <Navigate to="/" /> : <ForgotPassword />} 
+      />
+      <Route 
+        path="/reset-password" 
+        element={user ? <Navigate to="/" /> : <ResetPassword />} 
       />
       <Route
         path="/auth"

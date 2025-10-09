@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AuthService from '../services/AuthService';
 import styles from './AuthPage.module.css';
 import { toast } from 'react-toastify';
+
 
 const AuthPage = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
@@ -129,7 +130,8 @@ const AuthPage = () => {
                 required
               />
             </div>
-            <a href="#">Esqueceu sua senha?</a>
+     
+            <Link to="/forgot-password" className={styles.forgotLink}>Esqueceu sua senha?</Link>
             <button type="submit" disabled={loading}>
               {loading ? '...' : 'Entrar'}
             </button>

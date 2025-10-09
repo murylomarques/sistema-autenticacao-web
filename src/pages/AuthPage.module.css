@@ -306,3 +306,14 @@ form {
     transform: translate3d(4px, 0, 0);
   }
 }
+
+.forgotLink {
+  color: #555;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+  transition: color 0.2s;
+}
+.forgotLink:hover {
+  color: #5ab8ba;
+}
